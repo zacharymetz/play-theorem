@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Game Chooser Beta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename = 'css/main.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  </head>
+  <body class="align">
+
+    <div class="grid">
+      {% if True %}
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Error!</strong> Steam Profile Address or Steam ID Does Not Exist
+      </div>
+      {% endif %}
+
+      <br>
+      <center><img src="{{ url_for('static', filename = 'img/alphaLogo.svg') }}" class="logo"><h2>Steam Game Chooser</h2></center>
+      <form action="/" method="POST" class="form login">
+        <div class="form__field tooltip" data-tooltip="You can find Your steam name here: http://steamcommunity.com/id/username">
+          <label for="login__username"><img src="https://s3-us-west-2.amazonaws.com/steam-game-choser/steam-logo.svg"  class="s_logo"><span class="hidden">Username</span></label>
+          <!-- this will be an exarimental tool tips -->
+          {{ form.steamid(class="form__input",id="steam__id",placeholder="Steam Userame or Steam ID")}}
+        </div>
+        <div class="form__field">
+          {{ form.submit( value="Start Searching")}}
+
+        </div>
+      </form>
+      <p class="text--center">What is this? <a href="#">About Us</a></p>
+    </div>
+    <div class="footer">
+      <div class="social-media-icon">
+        <img class="social_icon" src="{{ url_for('static', filename = 'img/social/facebook.svg') }}">
+      </div>
+      <div class="social-media-icon">
+        <img  class="social_icon"src="{{ url_for('static', filename = 'img/social/google-plus.svg') }}">
+      </div>
+      <div class="social-media-icon">
+        <img class="social_icon"  src="https://s3-us-west-2.amazonaws.com/steam-game-choser/social/reddit.svg">
+      </div>
+      <div class="social-media-icon">
+        <img class="social_icon" src="https://s3-us-west-2.amazonaws.com/steam-game-choser/social/twitter.svg">
+      </div>
+      <div class="social-media-icon">
+        <img class="social_icon" src="https://s3-us-west-2.amazonaws.com/steam-game-choser/social/instagram+(1).svg">
+      </div>
+
+    </div>
+  </body>
+</html>

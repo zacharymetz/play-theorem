@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="static/results.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <h1 class="title">Your Recomended Games</h1>
+
+
+<div id="app" class="container">
+  {% for i in range(3) %} {# 3 is a good number to display, even 2 is better if it finds more concrete recomendations #}
+    {# get one of the screen shots from the db #}
+
+  <card data-image={{screen_shots[i]}}>
+    <h1 slot="header">{{names[i]}}</h1>
+    <p slot="content">
+      <span class="badge badge-dark">
+        Action
+      </span>
+      <span class="badge badge-dark">
+        RPG
+      </span>
+      This is for the game description, also for genre and other.This is for
+      the game description, also for genre and other. This is for the game
+      description, also for genre and other.
+       <span class="badge badge-green">
+         Play
+       </span>
+     </p>
+  </card>
+  {% endfor %}
+
+
+</div>
+    <script src="static/results.js"></script>
+  </body>
+</html>

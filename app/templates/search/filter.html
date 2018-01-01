@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/filter.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <script src="/static/filter.js"></script>
+  </head>
+  <body class="align">
+    <div class="grid">
+      <form action="/search" method="POST" >
+      <div class="form login">
+        <center><h2>What Are You In The Mood For?</h2></center>
+        <center>
+        <div style="width:140%;margin-left:-20%;">
+          <h3>I Wanna Play...</h3>
+          <div class="filter-button main-button"  style="width:28%;" id="game_select_aa" onclick="gameInfoOne(1);">Something New</div>
+          <div class="filter-button"  style="width:28%;" id="game_select_ab" onclick="gameInfoOne(2);">Been a While</div>
+          <div class="filter-button " style="width:28%;" id="game_select_ac" onclick="gameInfoOne(3);">All Time Favourites</div>
+          <input type="hidden" name="mood" id="mood" value=0>
+        </div>
+        </center>
+        <center>
+          <div style="display:inline-block"><br> <a onclick="moreOptions();">more options..</a></div>
+        </center>
+        <center>
+        <div style="width:140%;margin-left:-20%;display:none;" id="genres" >
+          <h3>Genre</h3>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="g4" value="0">Casual</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g23" value="0">Indie</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g25" value="0">Adventure</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g1" value="0">Action</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g2" value="0">Strategy</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g3" value="0">RPG</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g9" value="0">Racing</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g18" value="0">Sports</div>
+          <div class="filter-button" onclick="selectOption(this)"><input type="hidden" name="g28" value="0">Simulation</div>
+        </div>
+        </center>
+        <center>
+        <div style="width:140%;margin-left:-20%;display:none;" id="categories">
+          <br>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c2" value="0">Single-player</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c1" value="0">Multi-player</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c9" value="0">Co-op</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c39" value="0">Local Co-op</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c28c18" value="0">Controller</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c24" value="0">Split Screen</div>
+          <div class="filter-button " onclick="selectOption(this)"><input type="hidden" name="c20" value="0">Mods</div>
+        </div>
+        </center>
+        <div class="form__field">
+          <input type="hidden" name="auth_key" value={{key}}>
+          <input type="hidden" name="steam_id" value={{steam_id}}>
+          <input type="submit" value="Get Resutls">
+        </div>
+      </div>
+      </form>
+    </div>
+  </body>
+</html>
