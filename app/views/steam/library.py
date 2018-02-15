@@ -3,8 +3,9 @@
 """
 
 import json
-import urllib.request
-from . import STEAM_API_KEY
+
+import requests
+from app.views.steam import get_steam_key
 
 class SteamLibrary:
     'Class to hold all the information related to a users steam library'
@@ -34,10 +35,10 @@ class SteamLibrary:
 #and the game count
 def get_steam_library(steam_id):
     print(steam_id)
-    api_url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+STEAM_API_KEY+"&steamid="+str(steam_id)+"&format=json"
-    api_response = urllib.request.urlopen(api_url)
-    print(api_response.getcode())
-    return_json = json.loads(api_response.read().decode("utf-8"))
+    api_url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+get_steam_key()+"&steamid="+str(steam_id)+"&format=json"
+    api_response = requests.get(api_url)
+    print(api_response)
+    return_json =  api_response.json()
     return return_json['response']['games'], return_json['response']['game_count']
 
 
@@ -45,9 +46,9 @@ def get_steam_library(steam_id):
 # this api request does not require a key
 def get_steam_app_data(app_id):
     api_url = "http://store.steampowered.com/api/appdetails?appids=" + str(app_id)
-    api_response = urllib.request.urlopen(api_url)
-    print(api_response.getcode())
-    return json.loads(api_response.read().decode("utf-8"))
+    api_response = requests.get(api_url)
+    print(api_response)
+    return api_response.json()
 
 
 #returns the name of the app (DOSENT WORK)
@@ -62,12 +63,13 @@ def get_steam_id(steam_name):
     username
     """
 
-    api_url = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key="+STEAM_API_KEY+ "&vanityurl=" + steam_name
+    api_url = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key="+get_steam_key()+ "&vanityurl=" + steam_name
     print(api_url)
-    api_response = urllib.request.urlopen(api_url)
+    api_response = requests.get(api_url)
+    print(1)
 
-    print(api_response.getcode())
-    return json.loads(api_response.read().decode("utf-8"))
+    print(api_response.text)
+    return api_response.json()
 
 def apps_used_last_two_weeks(steam_library):
 	played_last_two_weeks = []

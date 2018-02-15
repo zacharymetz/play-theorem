@@ -14,7 +14,7 @@ def landing_page():
         print("finding steam id")
         steam_id = get_steam_id(form.steamid.data)
         print(steam_id)
-        return "  "
+        return render_template('search/filter.html',form=form,error=error)
 
 
     return render_template('search/main.html',form=form,error=error)
@@ -23,4 +23,4 @@ def landing_page():
 def results():
 
 
-    return render_template('/search/results.html')
+    return render_template('/search/results.html',screen_shots=["","",""],names=["","",""])
